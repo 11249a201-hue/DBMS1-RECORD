@@ -1,0 +1,457 @@
+SQL>create table student3
+(
+studnet_id number,
+Student_name varchar(20),
+dept varchar(10),
+age number,
+email varchar(10)
+);
+
+SQL> desc student3
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ STUDENT_ID                                NOT NULL NUMBER
+ NAME                                               VARCHAR2(20)
+ DEPT                                               VARCHAR2(10)
+ AGE                                                NUMBER
+ EMAIL                                              VARCHAR2(10)
+SQL> create table department2
+  2  (
+  3  dept_id number,
+  4  deptname varchar(20)
+  5  );
+
+Table created.
+
+SQL> desc department2;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DEPT_ID                                            NUMBER
+ DEPTNAME                                           VARCHAR2(20)
+SQL> Alter table department2 add constraint pk_department primary key(dept_id);
+
+Table altered.
+
+SQL> Alter table department2 add constraint pk_department primary key(dept_id);
+
+Table altered.
+
+SQL> Alter table student3 add constraint uq_student_email unique(email);
+
+Table altered.
+
+SQL> Alter table student3 add constraint chk_student_age check(age>=18);
+
+Table altered.
+SQL> ALter table student3 modify dept default 'cse';
+
+Table altered.
+
+SQL> desc student3;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ STUDENT_ID                                NOT NULL NUMBER
+ NAME                                               VARCHAR2(20)
+ DEPT                                               VARCHAR2(10)
+ AGE                                                NUMBER
+ EMAIL                                              VARCHAR2(10)
+
+
+SQL> Alter table student3 modify email varchar2(25);
+
+Table altered.
+
+SQL> insert into student3 values(201,'pujitha','cse',19,'puji@gmail.com');
+
+1 row created.
+
+SQL> select * from student3;
+
+STUDENT_ID NAME                 DEPT              AGE EMAIL
+---------- -------------------- ---------- ---------- -------------------------
+       201 pujitha              cse                19 puji@gmail.com
+
+SQL> insert into department2 values(1,'cse');
+
+1 row created.
+
+SQL> select * from department2;
+
+   DEPT_ID DEPTNAME
+---------- --------------------
+         1 cse
+
+SQL> sAlter table student3 modify name constraint nn_student_name not null;
+SP2-0734: unknown command beginning "sAlter tab..." - rest of line ignored.
+SQL> Alter table student3 modify year not null;
+Alter table student3 modify year not null
+                            *
+ERROR at line 1:
+ORA-00904: "YEAR": invalid identifier
+
+
+SQL> Alter table student3 modify dept not null;
+
+Table altered.
+
+SQL> desc student3;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ STUDENT_ID                                NOT NULL NUMBER
+ NAME                                               VARCHAR2(20)
+ DEPT                                      NOT NULL VARCHAR2(10)
+ AGE                                                NUMBER
+ EMAIL                                              VARCHAR2(25)
+
+SQL> Alter table student3 modify email varchar2(25);
+
+Table altered.
+
+SQL> insert into student3 values(201,'pujitha','cse',19,'puji@gmail.com');
+
+1 row created.
+
+SQL> select * from student3;
+
+STUDENT_ID NAME                 DEPT              AGE EMAIL
+---------- -------------------- ---------- ---------- -------------------------
+       201 pujitha              cse                19 puji@gmail.com
+
+SQL> insert into department2 values(1,'cse');
+
+1 row created.
+
+SQL> select * from department2;
+
+   DEPT_ID DEPTNAME
+---------- --------------------
+         1 cse
+
+SQL> sAlter table student3 modify name constraint nn_student_name not null;
+SP2-0734: unknown command beginning "sAlter tab..." - rest of line ignored.
+SQL> Alter table student3 modify year not null;
+Alter table student3 modify year not null
+                            *
+ERROR at line 1:
+ORA-00904: "YEAR": invalid identifier
+
+
+SQL> Alter table student3 modify dept not null;
+
+Table altered.
+
+SQL> desc student3;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ STUDENT_ID                                NOT NULL NUMBER
+ NAME                                               VARCHAR2(20)
+ DEPT                                      NOT NULL VARCHAR2(10)
+ AGE                                                NUMBER
+ EMAIL                                              VARCHAR2(25)
+SQL> Alter table student3 modify email varchar2(25);
+
+Table altered.
+
+SQL> insert into student3 values(201,'pujitha','cse',19,'puji@gmail.com');
+
+1 row created.
+
+SQL> select * from student3;
+
+STUDENT_ID NAME                 DEPT              AGE EMAIL
+---------- -------------------- ---------- ---------- -------------------------
+       201 pujitha              cse                19 puji@gmail.com
+
+SQL> insert into department2 values(1,'cse');
+
+1 row created.
+
+SQL> select * from department2;
+
+   DEPT_ID DEPTNAME
+---------- --------------------
+         1 cse
+
+SQL> sAlter table student3 modify name constraint nn_student_name not null;
+SP2-0734: unknown command beginning "sAlter tab..." - rest of line ignored.
+SQL> Alter table student3 modify year not null;
+Alter table student3 modify year not null
+                            *
+ERROR at line 1:
+ORA-00904: "YEAR": invalid identifier
+
+
+SQL> Alter table student3 modify dept not null;
+
+Table altered.
+
+SQL> desc student3;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ STUDENT_ID                                NOT NULL NUMBER
+ NAME                                               VARCHAR2(20)
+ DEPT                                      NOT NULL VARCHAR2(10)
+ AGE                                                NUMBER
+ EMAIL                                              VARCHAR2(25)
+vSQL> Alter table student3 modify email varchar2(25);
+
+Table altered.
+
+SQL> insert into student3 values(201,'pujitha','cse',19,'puji@gmail.com');
+
+1 row created.
+
+SQL> select * from student3;
+
+STUDENT_ID NAME                 DEPT              AGE EMAIL
+---------- -------------------- ---------- ---------- -------------------------
+       201 pujitha              cse                19 puji@gmail.com
+
+SQL> insert into department2 values(1,'cse');
+
+1 row created.
+
+SQL> select * from department2;
+
+   DEPT_ID DEPTNAME
+---------- --------------------
+         1 cse
+
+SQL> sAlter table student3 modify name constraint nn_student_name not null;
+SP2-0734: unknown command beginning "sAlter tab..." - rest of line ignored.
+SQL> Alter table student3 modify year not null;
+Alter table student3 modify year not null
+                            *
+ERROR at line 1:
+ORA-00904: "YEAR": invalid identifier
+
+
+SQL> Alter table student3 modify dept not null;
+
+Table altered.
+
+SQL> desc student3;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ STUDENT_ID                                NOT NULL NUMBER
+ NAME                                               VARCHAR2(20)
+ DEPT                                      NOT NULL VARCHAR2(10)
+ AGE                                                NUMBER
+ EMAIL                                              VARCHAR2(25)
+SQL> Alter table student3 modify email varchar2(25);
+
+Table altered.
+
+SQL> insert into student3 values(201,'pujitha','cse',19,'puji@gmail.com');
+
+1 row created.
+
+SQL> select * from student3;
+
+STUDENT_ID NAME                 DEPT              AGE EMAIL
+---------- -------------------- ---------- ---------- -------------------------
+       201 pujitha              cse                19 puji@gmail.com
+
+SQL> insert into department2 values(1,'cse');
+
+1 row created.
+
+SQL> select * from department2;
+
+   DEPT_ID DEPTNAME
+---------- --------------------
+         1 cse
+
+SQL> sAlter table student3 modify name constraint nn_student_name not null;
+SP2-0734: unknown command beginning "sAlter tab..." - rest of line ignored.
+SQL> Alter table student3 modify year not null;
+Alter table student3 modify year not null
+                            *
+ERROR at line 1:
+ORA-00904: "YEAR": invalid identifier
+
+
+SQL> Alter table student3 modify dept not null;
+
+Table altered.
+
+SQL> desc student3;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ STUDENT_ID                                NOT NULL NUMBER
+ NAME                                               VARCHAR2(20)
+ DEPT                                      NOT NULL VARCHAR2(10)
+ AGE                                                NUMBER
+ EMAIL                                              VARCHAR2(25)
+SQL> Alter table student3 modify email varchar2(25);
+
+Table altered.
+
+SQL> insert into student3 values(201,'pujitha','cse',19,'puji@gmail.com');
+
+1 row created.
+
+SQL> select * from student3;
+
+STUDENT_ID NAME                 DEPT              AGE EMAIL
+---------- -------------------- ---------- ---------- -------------------------
+       201 pujitha              cse                19 puji@gmail.com
+
+SQL> insert into department2 values(1,'cse');
+
+1 row created.
+
+SQL> select * from department2;
+
+   DEPT_ID DEPTNAME
+---------- --------------------
+         1 cse
+
+SQL> sAlter table student3 modify name constraint nn_student_name not null;
+SP2-0734: unknown command beginning "sAlter tab..." - rest of line ignored.
+SQL> Alter table student3 modify year not null;
+Alter table student3 modify year not null
+                            *
+ERROR at line 1:
+ORA-00904: "YEAR": invalid identifier
+
+
+SQL> Alter table student3 modify dept not null;
+
+Table altered.
+
+SQL> desc student3;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ STUDENT_ID                                NOT NULL NUMBER
+ NAME                                               VARCHAR2(20)
+ DEPT                                      NOT NULL VARCHAR2(10)
+ AGE                                                NUMBER
+ EMAIL                                              VARCHAR2(25)
+SQL> Alter table student3 modify email varchar2(25);
+
+Table altered.
+
+SQL> insert into student3 values(201,'pujitha','cse',19,'puji@gmail.com');
+
+1 row created.
+
+SQL> select * from student3;
+
+STUDENT_ID NAME                 DEPT              AGE EMAIL
+---------- -------------------- ---------- ---------- -------------------------
+       201 pujitha              cse                19 puji@gmail.com
+
+SQL> insert into department2 values(1,'cse');
+
+1 row created.
+
+SQL> select * from department2;
+
+   DEPT_ID DEPTNAME
+---------- --------------------
+         1 cse
+
+SQL> sAlter table student3 modify name constraint nn_student_name not null;
+SP2-0734: unknown command beginning "sAlter tab..." - rest of line ignored.
+SQL> Alter table student3 modify year not null;
+Alter table student3 modify year not null
+                            *
+ERROR at line 1:
+ORA-00904: "YEAR": invalid identifier
+
+
+SQL> Alter table student3 modify dept not null;
+
+Table altered.
+
+SQL> desc student3;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ STUDENT_ID                                NOT NULL NUMBER
+ NAME                                               VARCHAR2(20)
+ DEPT                                      NOT NULL VARCHAR2(10)
+ AGE                                                NUMBER
+ EMAIL                                              VARCHAR2(25)
+vSQL> Alter table student3 modify email varchar2(25);
+
+Table altered.
+
+SQL> insert into student3 values(201,'pujitha','cse',19,'puji@gmail.com');
+
+1 row created.
+
+SQL> select * from student3;
+
+STUDENT_ID NAME                 DEPT              AGE EMAIL
+---------- -------------------- ---------- ---------- -------------------------
+       201 pujitha              cse                19 puji@gmail.com
+
+SQL> insert into department2 values(1,'cse');
+
+1 row created.
+
+SQL> select * from department2;
+
+   DEPT_ID DEPTNAME
+---------- --------------------
+         1 cse
+
+SQL> sAlter table student3 modify name constraint nn_student_name not null;
+SP2-0734: unknown command beginning "sAlter tab..." - rest of line ignored.
+SQL> Alter table student3 modify year not null;
+Alter table student3 modify year not null
+                            *
+ERROR at line 1:
+ORA-00904: "YEAR": invalid identifier
+
+
+SQL> Alter table student3 modify dept not null;
+
+Table altered.
+
+SQL> desc student3;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ STUDENT_ID                                NOT NULL NUMBER
+ NAME                                               VARCHAR2(20)
+ DEPT                                      NOT NULL VARCHAR2(10)
+ AGE                                                NUMBER
+ EMAIL                                              VARCHAR2(25)
+vSQL> Alter table student3 modify email varchar2(25);
+
+Table altered.
+
+SQL> insert into student3 values(201,'pujitha','cse',19,'puji@gmail.com');
+
+1 row created.
+
+SQL> select * from student3;
+
+STUDENT_ID NAME                 DEPT              AGE EMAIL
+---------- -------------------- ---------- ---------- -------------------------
+       201 pujitha              cse                19 puji@gmail.com
+
+SQL> insert into department2 values(1,'cse');
+
+1 row created.
+
+SQL> select * from department2;
+
+   DEPT_ID DEPTNAME
+---------- --------------------
+         1 cse
+
+SQL> Alter table student3 modify dept not null;
+
+Table altered.
+
+SQL> desc student3;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ STUDENT_ID                                NOT NULL NUMBER
+ NAME                                               VARCHAR2(20)
+ DEPT                                      NOT NULL VARCHAR2(10)
+ AGE                                                NUMBER
+ EMAIL                                              VARCHAR2(25)
+
