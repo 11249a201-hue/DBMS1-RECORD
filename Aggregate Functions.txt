@@ -1,0 +1,859 @@
+SQL> create table stu_marks
+  2  (
+  3  student_id number(5),
+  4  student_ name varchar(30),
+  5  department varchar(20),
+  6  marks number(3)
+  7  );
+student_ name varchar(30),
+              *
+ERROR at line 4:
+ORA-00907: missing right parenthesis
+
+
+SQL> create table stu_marks
+  2  (
+  3  student_id number(5),
+  4  student_ name varchar(30),
+  5  department varchar(20),
+  6  marks number(3)
+  7
+SQL> create table stu_marks1
+  2  (
+  3   STUDENT_ID NUMBER(5) PRIMARY KEY,
+  4   STUDENT_NAME VARCHAR2(30),
+  5   DEPARTDEPARTMENT VARCHAR2(20),
+  6  MARKS NUMBER(3)
+  7  );
+
+Table created.
+
+SQL> desc stu_marks1
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ STUDENT_ID                                NOT NULL NUMBER(5)
+ STUDENT_NAME                                       VARCHAR2(30)
+ DEPARTDEPARTMENT                                   VARCHAR2(20)
+ MARKS                                              NUMBER(3)
+
+SQL> insert into student values(101,'Mahi','cse',85);
+
+1 row created.
+
+SQL> insert into student values(102,'Dhanya','cse',78);
+
+1 row created.
+
+SQL> insert into student values(103,'puji','cse',92);
+
+1 row created.
+
+SQL> insert into student values(104,'Dhanya sree','cse',99);
+
+1 row created.
+
+SQL> insert into student values(105,'kavya','cse',88);
+
+1 row created.
+
+SQL> select from * stu_marks1;
+select from * stu_marks1
+       *
+ERROR at line 1:
+ORA-00936: missing expression
+
+
+SQL> select * from stu_marks1;
+
+no rows selected
+
+SQL> select * from student;
+
+REG_NO    NAME            DEP              YEAR
+--------- --------------- ---------- ----------
+101       Mahi            cse                85
+102       Dhanya          cse                78
+103       puji            cse                92
+104       Dhanya sree     cse                99
+105       kavya           cse                88
+
+SQL> select count(*) as total_students
+  2  from student;
+
+TOTAL_STUDENTS
+--------------
+             5
+
+SQL> select(*) as total_marks
+  2  from student;
+select(*) as total_marks
+       *
+ERROR at line 1:
+ORA-00936: missing expression
+
+
+SQL> select sum (marks) as total_marks
+  2  from student;
+select sum (marks) as total_marks
+            *
+ERROR at line 1:
+ORA-00904: "MARKS": invalid identifier
+
+
+SQL> select sum(Marks) as total_marks
+  2  from student;
+select sum(Marks) as total_marks
+           *
+ERROR at line 1:
+ORA-00904: "MARKS": invalid identifier
+
+
+SQL> SELECT COUNT(*) AS TOTAL_STUDENTS
+  2  FROM STUDENT;
+
+TOTAL_STUDENTS
+--------------
+             5
+
+SQL> SELECT SUM(MARKS) AS TOTAL_MARKS
+  2  FROM STUDENT;
+SELECT SUM(MARKS) AS TOTAL_MARKS
+           *
+ERROR at line 1:
+ORA-00904: "MARKS": invalid identifier
+
+
+SQL> SELECT SUM(year) AS TOTAL_MARKS
+  2  from student;
+
+TOTAL_MARKS
+-----------
+        442
+
+SQL> SELECT AVG(MARKS) AS AVERAGE_MARKS
+  2  FROM STUDENT;
+SELECT AVG(MARKS) AS AVERAGE_MARKS
+           *
+ERROR at line 1:
+ORA-00904: "MARKS": invalid identifier
+
+
+SQL> SELECT AVG(YEAR) AS AVERAGE_MARKS FROM STUDENT;
+
+AVERAGE_MARKS
+-------------
+         88.4
+
+SQL> SELECT MAX(YEAR) AS LOWEST_MARK FROM STUDENT;
+
+LOWEST_MARK
+-----------
+         99
+
+SQL> SELECT DEPARTMENT, AVG(MARKS) AS AVG_MARKS
+  2  FROM STUDENT
+  3  SELECT DEPARTMENT, AVG(MARKS) AS AVG_MARKS
+  4
+SQL> SELECT DEPARTMENT,AVG(YEAR) AS AVG_MARKS
+  2  FROM STUDENT
+  3  GROUP BY DEPARTMENT;
+GROUP BY DEPARTMENT
+         *
+ERROR at line 3:
+ORA-00904: "DEPARTMENT": invalid identifier
+
+
+SQL> SELECT DEPARTMENT,AVG(YEAR) AS AVG_MARKS
+  2  FROM STUDENT
+  3  GROUP BY DEP;
+SELECT DEPARTMENT,AVG(YEAR) AS AVG_MARKS
+       *
+ERROR at line 1:
+ORA-00904: "DEPARTMENT": invalid identifier
+
+
+SQL> SELECT DEP,AVG(YEAR) AS AVG_MARKS
+  2  FROM STUDENT
+  3  GROUP BY DEP;
+
+DEP         AVG_MARKS
+---------- ----------
+cse              88.4
+
+SQL> SELECT DEP, COUNT(*) AS TOTAL_STUDENTS
+  2  FROM STUDENT
+  3  GOUP BY DEP;
+GOUP BY DEP
+     *
+ERROR at line 3:
+ORA-00933: SQL command not properly ended
+
+
+SQL> SELECT DEPARTMENT, COUNT(*) AS TOTAL_STUDENTS
+  2  FROM STUDENT
+  3  SELECT DEPARTMENT, COUNT(*) AS TOTAL_STUDENTS
+  4
+SQL> SELECT DEP, COUNT(*) AS TOTAL_STUDENTS
+  2  FROM STUDENT
+  3  GOUP BY DEP;
+GOUP BY DEP
+     *
+ERROR at line 3:
+ORA-00933: SQL command not properly ended
+
+
+SQL> SELECT DEP, COUNT(*) AS TOTAL_STUDENTS
+  2  FROM STUDENT
+  3  GROUP BY DEP;
+
+DEP        TOTAL_STUDENTS
+---------- --------------
+cse                     5
+
+SQL> SELECT DEP, MAX(YEAR) AS MAX_MARKS
+  2  FROM STUDENT
+  3  GROUP BY DEP
+  4  HAVING AVG(YEAR)<85;
+
+no rows selected
+
+SQL> SELECT DEP, MAX(YEAR) AS MAX_MARKS
+  2  FROM STUDENT
+  3  GROUP BY DEP
+  4  HAVING AVG(YEAR)>85;
+
+DEP         MAX_MARKS
+---------- ----------
+cse                99
+
+SQL> SELECT DEP,COUNT(*) AS TOTAL_STUDENTS
+  2  FROM STUDENT
+  3  GROUP BY DEP
+  4  HAVING COUNT (*)>1;
+
+DEP        TOTAL_STUDENTS
+---------- --------------
+cse                     5
+
+SQL> SELECT DEP,COUNT(*
+  2
+SQL> SELECT DEP,COUNT(*) AS NO_OF_STUDENTS,
+  2  AVG(YEAR) AS AVG_MARKS,MAX_(YEAR) AS HIGHEST_MARKS
+  3  FROM STUDENT
+  4  GROUP BY DEP
+  5  HAVING AVG(YEAR) >80;
+AVG(YEAR) AS AVG_MARKS,MAX_(YEAR) AS HIGHEST_MARKS
+                       *
+ERROR at line 2:
+ORA-00904: "MAX_": invalid identifier
+
+
+SQL> AVG(YEAR) AS AVG_MARKS,MAX(YEAR) AS HIGHEST_MARKS
+SP2-0734: unknown command beginning "AVG(YEAR) ..." - rest of line ignored.
+SQL> AVG(YEAR) AS AVG_MARKS,MAX(YEAR) AS HIGHEST_MARKS
+SP2-0734: unknown command beginning "AVG(YEAR) ..." - rest of line ignored.
+SQL> SELECT DEP,COUNT(*) AS NO_OF_STUDENTS,
+  2  AVG(YEAR) AS AVG_MARKS,MAX(YEAR) AS HIGHEST_MARKS
+  3  FROM STUDENT
+  4  GROUP BY DEP
+  5  HAVING AVG(YEAR)>85;
+
+DEP        NO_OF_STUDENTS  AVG_MARKS HIGHEST_MARKS
+---------- -------------- ---------- -------------
+cse                     5       88.4            99
+
+SQL> SELECT * FROM STUDENT;
+
+REG_NO    NAME            DEP              YEAR
+--------- --------------- ---------- ----------
+101       Mahi            cse                85
+102       Dhanya          cse                78
+103       puji            cse                92
+104       Dhanya sree     cse                99
+105       kavya           cse                88
+
+SQL>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SQL> create table stu_marks
+  2  (
+  3  student_id number(5),
+  4  student_ name varchar(30),
+  5  department varchar(20),
+  6  marks number(3)
+  7  );
+student_ name varchar(30),
+              *
+ERROR at line 4:
+ORA-00907: missing right parenthesis
+
+
+SQL> create table stu_marks
+  2  (
+  3  student_id number(5),
+  4  student_ name varchar(30),
+  5  department varchar(20),
+  6  marks number(3)
+  7
+SQL> create table stu_marks1
+  2  (
+  3   STUDENT_ID NUMBER(5) PRIMARY KEY,
+  4   STUDENT_NAME VARCHAR2(30),
+  5   DEPARTDEPARTMENT VARCHAR2(20),
+  6  MARKS NUMBER(3)
+  7  );
+
+Table created.
+
+SQL> desc stu_marks1
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ STUDENT_ID                                NOT NULL NUMBER(5)
+ STUDENT_NAME                                       VARCHAR2(30)
+ DEPARTDEPARTMENT                                   VARCHAR2(20)
+ MARKS                                              NUMBER(3)
+
+SQL> insert into student values(101,'Mahi','cse',85);
+
+1 row created.
+
+SQL> insert into student values(102,'Dhanya','cse',78);
+
+1 row created.
+
+SQL> insert into student values(103,'puji','cse',92);
+
+1 row created.
+
+SQL> insert into student values(104,'Dhanya sree','cse',99);
+
+1 row created.
+
+SQL> insert into student values(105,'kavya','cse',88);
+
+1 row created.
+
+SQL> select from * stu_marks1;
+select from * stu_marks1
+       *
+ERROR at line 1:
+ORA-00936: missing expression
+
+
+SQL> select * from stu_marks1;
+
+no rows selected
+
+SQL> select * from student;
+
+REG_NO    NAME            DEP              YEAR
+--------- --------------- ---------- ----------
+101       Mahi            cse                85
+102       Dhanya          cse                78
+103       puji            cse                92
+104       Dhanya sree     cse                99
+105       kavya           cse                88
+
+SQL> select count(*) as total_students
+  2  from student;
+
+TOTAL_STUDENTS
+--------------
+             5
+
+SQL> select(*) as total_marks
+  2  from student;
+select(*) as total_marks
+       *
+ERROR at line 1:
+ORA-00936: missing expression
+
+
+SQL> select sum (marks) as total_marks
+  2  from student;
+select sum (marks) as total_marks
+            *
+ERROR at line 1:
+ORA-00904: "MARKS": invalid identifier
+
+
+SQL> select sum(Marks) as total_marks
+  2  from student;
+select sum(Marks) as total_marks
+           *
+ERROR at line 1:
+ORA-00904: "MARKS": invalid identifier
+
+
+SQL> SELECT COUNT(*) AS TOTAL_STUDENTS
+  2  FROM STUDENT;
+
+TOTAL_STUDENTS
+--------------
+             5
+
+SQL> SELECT SUM(MARKS) AS TOTAL_MARKS
+  2  FROM STUDENT;
+SELECT SUM(MARKS) AS TOTAL_MARKS
+           *
+ERROR at line 1:
+ORA-00904: "MARKS": invalid identifier
+
+
+SQL> SELECT SUM(year) AS TOTAL_MARKS
+  2  from student;
+
+TOTAL_MARKS
+-----------
+        442
+
+SQL> SELECT AVG(MARKS) AS AVERAGE_MARKS
+  2  FROM STUDENT;
+SELECT AVG(MARKS) AS AVERAGE_MARKS
+           *
+ERROR at line 1:
+ORA-00904: "MARKS": invalid identifier
+
+
+SQL> SELECT AVG(YEAR) AS AVERAGE_MARKS FROM STUDENT;
+
+AVERAGE_MARKS
+-------------
+         88.4
+
+SQL> SELECT MAX(YEAR) AS LOWEST_MARK FROM STUDENT;
+
+LOWEST_MARK
+-----------
+         99
+
+SQL> SELECT DEPARTMENT, AVG(MARKS) AS AVG_MARKS
+  2  FROM STUDENT
+  3  SELECT DEPARTMENT, AVG(MARKS) AS AVG_MARKS
+  4
+SQL> SELECT DEPARTMENT,AVG(YEAR) AS AVG_MARKS
+  2  FROM STUDENT
+  3  GROUP BY DEPARTMENT;
+GROUP BY DEPARTMENT
+         *
+ERROR at line 3:
+ORA-00904: "DEPARTMENT": invalid identifier
+
+
+SQL> SELECT DEPARTMENT,AVG(YEAR) AS AVG_MARKS
+  2  FROM STUDENT
+  3  GROUP BY DEP;
+SELECT DEPARTMENT,AVG(YEAR) AS AVG_MARKS
+       *
+ERROR at line 1:
+ORA-00904: "DEPARTMENT": invalid identifier
+
+
+SQL> SELECT DEP,AVG(YEAR) AS AVG_MARKS
+  2  FROM STUDENT
+  3  GROUP BY DEP;
+
+DEP         AVG_MARKS
+---------- ----------
+cse              88.4
+
+SQL> SELECT DEP, COUNT(*) AS TOTAL_STUDENTS
+  2  FROM STUDENT
+  3  GOUP BY DEP;
+GOUP BY DEP
+     *
+ERROR at line 3:
+ORA-00933: SQL command not properly ended
+
+
+SQL> SELECT DEPARTMENT, COUNT(*) AS TOTAL_STUDENTS
+  2  FROM STUDENT
+  3  SELECT DEPARTMENT, COUNT(*) AS TOTAL_STUDENTS
+  4
+SQL> SELECT DEP, COUNT(*) AS TOTAL_STUDENTS
+  2  FROM STUDENT
+  3  GOUP BY DEP;
+GOUP BY DEP
+     *
+ERROR at line 3:
+ORA-00933: SQL command not properly ended
+
+
+SQL> SELECT DEP, COUNT(*) AS TOTAL_STUDENTS
+  2  FROM STUDENT
+  3  GROUP BY DEP;
+
+DEP        TOTAL_STUDENTS
+---------- --------------
+cse                     5
+
+SQL> SELECT DEP, MAX(YEAR) AS MAX_MARKS
+  2  FROM STUDENT
+  3  GROUP BY DEP
+  4  HAVING AVG(YEAR)<85;
+
+no rows selected
+
+SQL> SELECT DEP, MAX(YEAR) AS MAX_MARKS
+  2  FROM STUDENT
+  3  GROUP BY DEP
+  4  HAVING AVG(YEAR)>85;
+
+DEP         MAX_MARKS
+---------- ----------
+cse                99
+
+SQL> SELECT DEP,COUNT(*) AS TOTAL_STUDENTS
+  2  FROM STUDENT
+  3  GROUP BY DEP
+  4  HAVING COUNT (*)>1;
+
+DEP        TOTAL_STUDENTS
+---------- --------------
+cse                     5
+
+SQL> SELECT DEP,COUNT(*
+  2
+SQL> SELECT DEP,COUNT(*) AS NO_OF_STUDENTS,
+  2  AVG(YEAR) AS AVG_MARKS,MAX_(YEAR) AS HIGHEST_MARKS
+  3  FROM STUDENT
+  4  GROUP BY DEP
+  5  HAVING AVG(YEAR) >80;
+AVG(YEAR) AS AVG_MARKS,MAX_(YEAR) AS HIGHEST_MARKS
+                       *
+ERROR at line 2:
+ORA-00904: "MAX_": invalid identifier
+
+
+SQL> AVG(YEAR) AS AVG_MARKS,MAX(YEAR) AS HIGHEST_MARKS
+SP2-0734: unknown command beginning "AVG(YEAR) ..." - rest of line ignored.
+SQL> AVG(YEAR) AS AVG_MARKS,MAX(YEAR) AS HIGHEST_MARKS
+SP2-0734: unknown command beginning "AVG(YEAR) ..." - rest of line ignored.
+SQL> SELECT DEP,COUNT(*) AS NO_OF_STUDENTS,
+  2  AVG(YEAR) AS AVG_MARKS,MAX(YEAR) AS HIGHEST_MARKS
+  3  FROM STUDENT
+  4  GROUP BY DEP
+  5  HAVING AVG(YEAR)>85;
+
+DEP        NO_OF_STUDENTS  AVG_MARKS HIGHEST_MARKS
+---------- -------------- ---------- -------------
+cse                     5       88.4            99
+
+SQL> SELECT * FROM STUDENT;
+
+REG_NO    NAME            DEP              YEAR
+--------- --------------- ---------- ----------
+101       Mahi            cse                85
+102       Dhanya          cse                78
+103       puji            cse                92
+104       Dhanya sree     cse                99
+105       kavya           cse                88
+
+SQL>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SQL> create table stu_marks1
+  2  (
+  3   STUDENT_ID NUMBER(5) PRIMARY KEY,
+  4   STUDENT_NAME VARCHAR2(30),
+  5   DEPARTDEPARTMENT VARCHAR2(20),
+  6  MARKS NUMBER(3)
+  7  );
+
+Table created.
+
+SQL> desc stu_marks1
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ STUDENT_ID                                NOT NULL NUMBER(5)
+ STUDENT_NAME                                       VARCHAR2(30)
+ DEPARTDEPARTMENT                                   VARCHAR2(20)
+ MARKS                                              NUMBER(3)
+
+SQL> insert into student values(101,'Mahi','cse',85);
+
+1 row created.
+
+SQL> insert into student values(102,'Dhanya','cse',78);
+
+1 row created.
+
+SQL> insert into student values(103,'puji','cse',92);
+
+1 row created.
+
+SQL> insert into student values(104,'Dhanya sree','cse',99);
+
+1 row created.
+
+SQL> insert into student values(105,'kavya','cse',88);
+SQL> select * from student;
+REG_NO    NAME            DEP              YEAR
+--------- --------------- ---------- ----------
+101       Mahi            cse                85
+102       Dhanya          cse                78
+103       puji            cse                92
+104       Dhanya sree     cse                99
+105       kavya           cse                88
+
+SQL> select count(*) as total_students
+  2  from student;
+
+TOTAL_STUDENTS
+--------------
+
+SQL> SELECT COUNT(*) AS TOTAL_STUDENTS
+  2  FROM STUDENT;
+
+TOTAL_STUDENTS
+--------------
+             5
+
+SQL> SELECT SUM(MARKS) AS TOTAL_MARKS
+  2  FROM STUDENT;
+SELECT SUM(MARKS) AS TOTAL_MARKS
+           *
+ERROR at line 1:
+ORA-00904: "MARKS": invalid identifier
+
+
+SQL> SELECT SUM(year) AS TOTAL_MARKS
+  2  from student;
+
+TOTAL_MARKS
+-----------
+        442
+
+SQL> SELECT AVG(YEAR) AS AVERAGE_MARKS FROM STUDENT;
+
+AVERAGE_MARKS
+-------------
+         88.4
+
+SQL> SELECT MAX(YEAR) AS LOWEST_MARK FROM STUDENT;
+
+LOWEST_MARK
+-----------
+         99
+
+
+ORA-00904: "DEPARTMENT": invalid identifier
+
+
+SQL> SELECT DEP,AVG(YEAR) AS AVG_MARKS
+  2  FROM STUDENT
+  3  GROUP BY DEP;
+
+DEP         AVG_MARKS
+---------- ----------
+cse              88.4
+
+
+SQL> SELECT DEP, COUNT(*) AS TOTAL_STUDENTS
+  2  FROM STUDENT
+  3  GROUP BY DEP;
+
+DEP        TOTAL_STUDENTS
+---------- --------------
+cse                     5
+
+SQL> SELECT DEP, MAX(YEAR) AS MAX_MARKS
+  2  FROM STUDENT
+  3  GROUP BY DEP
+  4  HAVING AVG(YEAR)<85;
+
+no rows selected
+
+SQL> SELECT DEP, MAX(YEAR) AS MAX_MARKS
+  2  FROM STUDENT
+  3  GROUP BY DEP
+  4  HAVING AVG(YEAR)>85;
+
+DEP         MAX_MARKS
+---------- ----------
+cse                99
+
+SQL> SELECT DEP,COUNT(*) AS TOTAL_STUDENTS
+  2  FROM STUDENT
+  3  GROUP BY DEP
+  4  HAVING COUNT (*)>1;
+
+DEP        TOTAL_STUDENTS
+---------- --------------
+cse                     5
+
+SQL> SELECT DEP,COUNT(*
+  2
+SQL> SELECT DEP,COUNT(*) AS NO_OF_STUDENTS,
+  2  AVG(YEAR) AS AVG_MARKS,MAX_(YEAR) AS HIGHEST_MARKS
+  3  FROM STUDENT
+  4  GROUP BY DEP
+  5  HAVING AVG(YEAR) >80;
+SQL> SELECT DEP,COUNT(*) AS NO_OF_STUDENTS,
+  2  AVG(YEAR) AS AVG_MARKS,MAX(YEAR) AS HIGHEST_MARKS
+  3  FROM STUDENT
+  4  GROUP BY DEP
+  5  HAVING AVG(YEAR)>85;
+
+DEP        NO_OF_STUDENTS  AVG_MARKS HIGHEST_MARKS
+---------- -------------- ---------- -------------
+cse                     5       88.4            99
+
+SQL> SELECT * FROM STUDENT;
+
+REG_NO    NAME            DEP              YEAR
+--------- --------------- ---------- ----------
+101       Mahi            cse                85
+102       Dhanya          cse                78
+103       puji            cse                92
+104       Dhanya sree     cse                99
+105       kavya           cse                88
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
